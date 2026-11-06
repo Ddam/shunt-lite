@@ -1,0 +1,11 @@
+{
+  "name": "shunt-lite",
+  "owner": { "name": "damien" },
+  "plugins": [
+    {
+      "name": "shunt-lite",
+      "source": "./",
+      "description": "Refuses full reads of large files, answers with a tree-sitter outline, and locates code through a Haiku subagent."
+    }
+  ]
+}
