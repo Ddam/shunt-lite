@@ -55,17 +55,22 @@ def trim_outline(outline):
 
 
 def guidance(path, lines, limit):
-    header = f"{path} has {lines} lines (limit {limit}), so reading it whole is refused."
+    header = f"{path} has {lines} lines (limit {limit}), so a read without a range is refused."
+    closing = (
+        f"If the task needs the whole file (code review, full analysis), Read it with offset 1 "
+        f"and limit {lines}. If you leave parts unread, say which ones in your answer."
+    )
     outline = run_repomap("outline", path)
     if outline is None:
         return (
             f"{header} Find the relevant part with grep -n and a symbol or keyword, "
-            "then Read only that range with offset and limit."
+            f"then Read only that range with offset and limit. {closing}"
         )
     return (
         f"{header} Read only the range you need with offset and limit. "
         f"Outline (start-end kind name):\n{trim_outline(outline)}\n"
-        "If this does not show where to look, use grep -n or the shunt-lite:locator agent."
+        f"If this does not show where to look, use grep -n or the shunt-lite:locator agent. "
+        f"{closing}"
     )
 
 

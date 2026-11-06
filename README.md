@@ -2,7 +2,7 @@
 
 A Claude Code plugin that saves tokens on large files, with no external service.
 
-- **Refusal**: a full `Read` of a file over 350 lines is refused, as are bare `cat`, `head`, `tail`, `less` and `more`. The refusal carries the file outline (symbols with their line ranges), so Claude can read just the right range.
+- **Refusal**: a full `Read` of a file over 350 lines is refused, as are bare `cat`, `head`, `tail`, `less` and `more`. The refusal carries the file outline (symbols with their line ranges), so Claude can read just the right range. It also says how to read the whole file when the task needs it (code review, full analysis), and asks Claude to say what it left unread.
 - **Repository map**: a tree-sitter map of every symbol, kept in `.git/shunt-lite/map.txt` and updated incrementally.
 - **Locator**: the `shunt-lite:locator` subagent runs on Haiku, searches that map and returns `file:start-end` ranges.
 

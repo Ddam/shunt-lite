@@ -96,6 +96,11 @@ class GuardTest(unittest.TestCase):
         self.assertIn("grep -n", reason)
         self.assertNotIn("Outline", reason)
 
+    def test_the_refusal_gives_the_way_to_read_the_whole_file(self):
+        reason = self.read(self.big)["hookSpecificOutput"]["permissionDecisionReason"]
+        self.assertIn("offset 1 and limit 400", reason)
+        self.assertIsNone(self.read(self.big, offset=1, limit=400))
+
 
 if __name__ == "__main__":
     unittest.main()
