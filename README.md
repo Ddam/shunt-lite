@@ -10,27 +10,34 @@ Outlines cover Rust, TypeScript, JavaScript, Svelte, PHP, Python and Ruby. Other
 
 ## Setup
 
+Create the virtualenv once per machine. It needs a clone of this repository:
+
 ```bash
-sh scripts/setup.sh
+git clone https://github.com/Ddam/shunt-lite.git
+sh shunt-lite/scripts/setup.sh
 ```
 
-This creates the virtualenv in `~/.local/share/shunt-lite/venv`. Without it the refusal still works, but with no outline and no map. Run it again after a Python upgrade.
+The virtualenv lives in `~/.local/share/shunt-lite/venv`. Without it the refusal still works, but with no outline and no map. Run the script again after a Python upgrade.
 
-Install from this directory, for yourself in one project:
+Then, from the project where you want the plugin, install it for yourself only (`--scope local`):
 
 ```bash
-claude plugin marketplace add /path/to/shunt-lite
+claude plugin marketplace add Ddam/shunt-lite
 claude plugin install shunt-lite@shunt-lite --scope local
 ```
 
+Restart Claude Code, or reload the VS Code window, to load it.
+
 ## Updating
 
-Claude Code runs a copy of the plugin, not this directory. After a change, bump `version` in `.claude-plugin/plugin.json`, then:
+Claude Code runs a copy of the plugin taken from GitHub, so a change only applies once it is pushed and `version` in `.claude-plugin/plugin.json` is bumped. Then, from the project:
 
 ```bash
 claude plugin marketplace update shunt-lite
 claude plugin update shunt-lite@shunt-lite --scope local
 ```
+
+Restart to apply it.
 
 ## Configuration
 
